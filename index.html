@@ -14,11 +14,11 @@
       --bg: #000000;
       --bg-2: #000000;
       --ink: #F1F3F9;
-      --ink-soft: #9AA2B5;
-      --muted: #586073;
+      --ink-soft: #C5CEE3;
+      --muted: #8F9BB3;
       --accent: #FF5F38;
       --accent-2: #4A75FF;
-      --line: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.12);
       --card: #0A0A0C;
       --radius: 8px;
       --glow-orange: rgba(255, 95, 56, 0.15);
@@ -539,7 +539,7 @@
 
     .section-head .idx {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
+      font-size: 13.5px;
       color: var(--muted);
     }
 
@@ -572,7 +572,7 @@
 
     .exp-date {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 14.5px;
+      font-size: 15.5px;
       color: var(--muted);
       padding-top: 4px;
     }
@@ -586,7 +586,7 @@
 
     .exp-org {
       color: var(--accent-2);
-      font-size: 13.5px;
+      font-size: 14.5px;
       margin-bottom: 14px;
       font-family: 'IBM Plex Mono', monospace;
       text-shadow: 0 0 8px var(--glow-blue);
@@ -594,7 +594,7 @@
 
     .exp-row ul {
       color: var(--ink-soft);
-      font-size: 14.5px;
+      font-size: 15.5px;
       padding-left: 18px;
     }
 
@@ -676,6 +676,31 @@
       font-size: 21px;
     }
 
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .proj-link:hover {
+      color: var(--accent);
+    }
+
+    .proj-link svg {
+      opacity: 0.4;
+      transform: translate(-2px, 2px);
+      transition: all 0.2s ease;
+      stroke: var(--ink-soft);
+      flex-shrink: 0;
+    }
+
+    .proj-link:hover svg {
+      opacity: 1;
+      transform: translate(0, 0);
+      stroke: var(--accent);
+    }
+
     .proj-card p {
       color: var(--ink-soft);
       font-size: 14px;
@@ -690,11 +715,11 @@
 
     .stackrow span {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 10.5px;
-      color: var(--ink-soft);
-      background: var(--bg-2);
+      font-size: 12px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.03);
       padding: 4px 8px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       transition: all 0.2s ease;
     }
 
@@ -706,8 +731,8 @@
 
     .conf {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
+      font-size: 13px;
+      color: var(--accent);
       white-space: nowrap;
     }
 
@@ -723,7 +748,7 @@
 
     .spec-list div {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11.5px;
+      font-size: 13px;
       color: var(--ink-soft);
       line-height: 1.5;
     }
@@ -1298,6 +1323,66 @@
               <div><span class="label">interface:</span>Deployed as a Flask web app for real-time song suggestions</div>
             </div>
             <div class="stackrow"><span>Python</span><span>Flask</span><span>Machine Learning</span></div>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-icon">
+            <svg viewBox="0 0 100 100">
+              <!-- Cricket ball with seams -->
+              <circle cx="35" cy="65" r="16" fill="var(--accent)" opacity="0.85" />
+              <path d="M25 55 C33 55, 33 75, 45 75" stroke="var(--ink)" stroke-width="1.5" fill="none"
+                stroke-dasharray="3,3" />
+              <path d="M25 57 C31 63, 37 67, 45 73" stroke="var(--ink)" stroke-width="1" fill="none" opacity="0.6" />
+              <!-- Bar chart / analytics rising trend -->
+              <rect x="58" y="60" width="6" height="15" rx="1.5" fill="var(--accent-2)">
+                <animate attributeName="height" values="15;30;15" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="y" values="60;45;60" dur="2s" repeatCount="indefinite" />
+              </rect>
+              <rect x="68" y="45" width="6" height="30" rx="1.5" fill="var(--accent-2)">
+                <animate attributeName="height" values="30;45;30" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="y" values="45;30;45" dur="2s" repeatCount="indefinite" />
+              </rect>
+              <rect x="78" y="30" width="6" height="45" rx="1.5" fill="var(--accent-2)">
+                <animate attributeName="height" values="45;20;45" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="y" values="30;55;30" dur="2s" repeatCount="indefinite" />
+              </rect>
+              <!-- Trend line overlay -->
+              <path d="M35 65 L58 45 L68 30 L78 20" stroke="var(--accent-2)" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <animate attributeName="stroke-dashoffset" values="100;0" dur="3s" repeatCount="indefinite" />
+              </path>
+            </svg>
+          </div>
+          <div class="proj-content">
+            <div class="top">
+              <h3>
+                <a href="https://github.com/kamalikaprabakaran/IPL-Performance-Analytics-Dashboard" target="_blank"
+                  class="proj-link">
+                  IPL Performance Analytics Dashboard
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </h3>
+              <span class="conf">conf: 0.95</span>
+            </div>
+            <p>An interactive Power BI dashboard designed to analyze and visualize cricket player and team
+              performance across Indian Premier League seasons. The dashboard structures and models multi-season
+              datasets
+              to deliver cricket player comparisons, batting/bowling efficiency trends, and team metrics.</p>
+            <div class="spec-list">
+              <div><span class="label">modeling:</span>DAX measures and calculated columns for strike rates, economy,
+                and partner insights</div>
+              <div><span class="label">dataset:</span>Multi-season ball-by-ball and match datasets prepared via Excel
+              </div>
+              <div><span class="label">interface:</span>Interactive dynamic Power BI report featuring cross-filtering
+                and team comparisons</div>
+            </div>
+            <div class="stackrow"><span>Power BI</span><span>DAX</span><span>Excel</span><span>Data Modeling</span>
+            </div>
           </div>
         </div>
 
