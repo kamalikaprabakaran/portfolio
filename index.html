@@ -7,28 +7,29 @@
   <title>Kamalika P — AI/ML Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
-    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet">
   <style>
     :root {
       --bg: #000000;
       --bg-2: #000000;
-      --ink: #F1F3F9;
-      --ink-soft: #C5CEE3;
-      --muted: #8F9BB3;
-      --accent: #FF5F38;
-      --accent-2: #4A75FF;
-      --line: rgba(255, 255, 255, 0.12);
+      --ink: #FFFFFF;
+      --ink-soft: #DCE3F5;
+      --muted: #A9B4CC;
+      --accent: #FF7A54;
+      --accent-2: #6C93FF;
+      --line: rgba(255, 255, 255, 0.14);
       --card: #0A0A0C;
       --radius: 8px;
-      --glow-orange: rgba(255, 95, 56, 0.15);
-      --glow-blue: rgba(74, 117, 255, 0.12);
+      --glow-orange: rgba(255, 122, 84, 0.2);
+      --glow-blue: rgba(108, 147, 255, 0.16);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-style: italic;
     }
 
     html {
@@ -44,8 +45,34 @@
       background-position: 0 0, 16px 16px;
       color: var(--ink);
       font-family: 'Inter', sans-serif;
-      line-height: 1.5;
+      font-style: italic;
+      font-size: 16.5px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      animation: bg-drift 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes bg-drift {
+      0% {
+        background-position: 0 0, 16px 16px;
+      }
+
+      100% {
+        background-position: 20px 14px, 36px 30px;
+      }
+    }
+
+    /* thin scroll-progress indicator */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 999;
+      box-shadow: 0 0 10px var(--glow-orange);
+      transition: width 0.1s linear;
     }
 
     .mono {
@@ -56,9 +83,10 @@
     h1,
     h2,
     h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
 
     a {
@@ -98,6 +126,19 @@
       border-radius: 50%;
       background: var(--accent);
       flex: none;
+      animation: dot-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes dot-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 122, 84, 0.55);
+      }
+
+      50% {
+        box-shadow: 0 0 0 5px rgba(255, 122, 84, 0);
+      }
     }
 
     /* Clean, modern card containers instead of framed boxes */
@@ -136,24 +177,42 @@
     }
 
     .logo {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 19px;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 21px;
     }
 
     .navlinks {
       display: flex;
       gap: 28px;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .navlinks a {
       color: var(--ink-soft);
-      transition: color .15s;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color .2s;
+    }
+
+    .navlinks a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .25s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .navlinks a:hover {
-      color: var(--accent);
+      color: var(--ink);
+    }
+
+    .navlinks a:hover::after {
+      width: 100%;
     }
 
     /* ---------- hero ---------- */
@@ -181,10 +240,45 @@
       margin-bottom: 22px;
     }
 
+    @keyframes hero-in {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-anim {
+      opacity: 0;
+      animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     .hero h1 {
       font-size: clamp(44px, 8vw, 84px);
       line-height: 0.98;
       max-width: 820px;
+      background: linear-gradient(100deg, #FFFFFF 0%, #FFFFFF 55%, var(--accent-2) 90%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards, shine-sweep 6s ease-in-out 1.2s infinite;
+    }
+
+    @keyframes shine-sweep {
+
+      0%,
+      100% {
+        background-position: 0% 0;
+      }
+
+      50% {
+        background-position: 100% 0;
+      }
     }
 
     .hero .role {
@@ -436,19 +530,19 @@
     }
 
     .hero-role-title {
-      font-size: clamp(16px, 2.2vw, 19px);
+      font-size: clamp(17px, 2.2vw, 20px);
       color: var(--ink-soft);
       max-width: 680px;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.65;
       margin-top: 14px;
     }
 
     .hero-meta-new {
       margin-top: 20px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 14.5px;
-      color: var(--muted);
+      font-size: 15px;
+      color: var(--ink-soft);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -481,6 +575,26 @@
       box-shadow: 0 6px 20px rgba(255, 95, 56, 0.25);
     }
 
+    @keyframes cta-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 12px rgba(255, 122, 84, 0.1), 0 0 0 0 rgba(255, 122, 84, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 4px 12px rgba(255, 122, 84, 0.18), 0 0 0 8px rgba(255, 122, 84, 0);
+      }
+    }
+
+    .work-with-me-btn {
+      animation: cta-pulse 2.6s ease-in-out infinite;
+    }
+
+    .work-with-me-btn:hover {
+      animation: none;
+    }
+
     /* ---------- section shell ---------- */
     section {
       padding: 80px 0;
@@ -505,11 +619,13 @@
     }
 
     .section-head h2 .head-text {
-      background: linear-gradient(90deg, #F1F3F9 68%, #4A75FF 100%);
+      background: linear-gradient(100deg, var(--accent) 0%, #FFFFFF 45%, var(--accent-2) 100%);
+      background-size: 200% 100%;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
+      animation: shine-sweep 7s ease-in-out infinite;
     }
 
     .header-icon {
@@ -552,8 +668,9 @@
 
     .about-grid p {
       color: var(--ink-soft);
-      font-size: 16px;
-      margin-bottom: 16px;
+      font-size: 17.5px;
+      line-height: 1.75;
+      margin-bottom: 18px;
       max-width: 68ch;
     }
 
@@ -573,12 +690,12 @@
     .exp-date {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 15.5px;
-      color: var(--muted);
+      color: var(--ink-soft);
       padding-top: 4px;
     }
 
     .exp-role {
-      font-size: 19px;
+      font-size: 21px;
       margin-bottom: 6px;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
@@ -586,7 +703,7 @@
 
     .exp-org {
       color: var(--accent-2);
-      font-size: 14.5px;
+      font-size: 15px;
       margin-bottom: 14px;
       font-family: 'IBM Plex Mono', monospace;
       text-shadow: 0 0 8px var(--glow-blue);
@@ -594,12 +711,21 @@
 
     .exp-row ul {
       color: var(--ink-soft);
-      font-size: 15.5px;
+      font-size: 16px;
+      line-height: 1.7;
       padding-left: 18px;
     }
 
     .exp-row li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .exp-row.reveal-element {
+      transform: translateX(-40px);
+    }
+
+    .exp-row.reveal-element.pop-active {
+      transform: translateX(0);
     }
 
     .exp-link {
@@ -703,7 +829,8 @@
 
     .proj-card p {
       color: var(--ink-soft);
-      font-size: 14px;
+      font-size: 15.5px;
+      line-height: 1.65;
       margin: 14px 0 16px;
     }
 
@@ -748,9 +875,9 @@
 
     .spec-list div {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--ink-soft);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .spec-list span.label {
@@ -813,9 +940,7 @@
       transition: transform 0.3s ease;
     }
 
-    .tech-card:hover .tech-logo-badge {
-      transform: scale(1.15);
-    }
+
 
     .tech-logo-badge img {
       width: 100%;
@@ -848,10 +973,26 @@
 
     .tech-name {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--ink-soft);
       font-weight: 500;
       transition: color 0.3s ease;
+    }
+
+    @keyframes float-soft {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1.15);
+      }
+
+      50% {
+        transform: translateY(-4px) scale(1.15);
+      }
+    }
+
+    .tech-card:hover .tech-logo-badge {
+      animation: float-soft 1.4s ease-in-out infinite;
     }
 
     .tech-card:hover .tech-name {
@@ -886,14 +1027,15 @@
 
     .edu-item .org {
       color: var(--ink-soft);
-      font-size: 13.5px;
+      font-size: 14.5px;
       margin-bottom: 4px;
     }
 
     .edu-item .score {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--accent);
+      font-weight: 500;
     }
 
     .ach-item {
@@ -905,14 +1047,15 @@
 
     .ach-item .mark {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--accent);
       padding-top: 3px;
     }
 
     .ach-item p {
       color: var(--ink-soft);
-      font-size: 14.5px;
+      font-size: 15.5px;
+      line-height: 1.6;
     }
 
     /* ---------- contact ---------- */
@@ -929,6 +1072,7 @@
 
     .contact .sub {
       color: var(--ink-soft);
+      font-size: 17px;
       margin-bottom: 36px;
     }
 
@@ -943,8 +1087,8 @@
       border-top: 1px solid var(--line);
       padding: 26px 0;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11.5px;
-      color: var(--muted);
+      font-size: 12.5px;
+      color: var(--ink-soft);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -1009,6 +1153,8 @@
 
 <body>
 
+  <div id="scroll-progress"></div>
+
   <header>
     <div class="wrap">
       <nav>
@@ -1029,7 +1175,7 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid-container">
-        <div class="hero-left">
+        <div class="hero-left hero-anim" style="animation-delay:.05s;">
           <div class="profile-container">
             <div class="profile-avatar">
               <img src="profile.png" alt="Kamalika P" class="profile-img"
@@ -1077,14 +1223,15 @@
 
         <div class="hero-right">
           <h1>Kamalika P</h1>
-          <p class="hero-role-title">B.Tech AI &amp; Data Science Undergrad | Deep Learning | NLP | Computer Vision |
+          <p class="hero-role-title hero-anim" style="animation-delay:.2s;">B.Tech AI &amp; Data Science Undergrad |
+            Deep Learning | NLP | Computer Vision |
             Building AI-Powered Web Apps with Flask | Turning Data Into Real-Time Insights</p>
-          <div class="hero-meta-new">
+          <div class="hero-meta-new hero-anim" style="animation-delay:.35s;">
             <span>degree: B.Tech AI &amp; DS · exp. 2027</span>
             <span class="meta-separator">•</span>
             <span>cgpa: 8.0 / 10</span>
           </div>
-          <div class="hero-action-btn">
+          <div class="hero-action-btn hero-anim" style="animation-delay:.5s;">
             <a href="mailto:kamalikaprabakaran@gmail.com" class="btn primary work-with-me-btn">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round"
@@ -1675,8 +1822,19 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // scroll progress bar
+      const progressBar = document.getElementById('scroll-progress');
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = `${pct}%`;
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
       const animatedElements = document.querySelectorAll(
-        '.proj-card, .exp-row, .tech-pill, .edu-item, .ach-item, .about-grid > div'
+        '.proj-card, .exp-row, .tech-card, .edu-item, .ach-item, .about-grid > div'
       );
       const observerOptions = { root: null, rootMargin: "0px 0px -60px 0px", threshold: 0.08 };
       const observer = new IntersectionObserver((entries, observer) => {
@@ -1687,6 +1845,17 @@
           }
         });
       }, observerOptions);
+
+      // stagger reveal timing by position within each group so sections cascade in
+      const groupSelectors = ['.proj-grid', '.tech-grid', '.two-col > div'];
+      groupSelectors.forEach((sel) => {
+        document.querySelectorAll(sel).forEach((group) => {
+          Array.from(group.children).forEach((child, i) => {
+            child.style.transitionDelay = `${Math.min(i * 90, 450)}ms`;
+          });
+        });
+      });
+
       animatedElements.forEach((el) => { el.classList.add('reveal-element'); observer.observe(el); });
 
       const socialIcons = document.querySelectorAll('.social-icon');
